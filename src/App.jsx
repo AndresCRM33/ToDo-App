@@ -30,7 +30,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='container'>
       <h1>Todo App</h1>
       <form
         onSubmit={(e) => handleSubmit(e)}
@@ -43,10 +43,13 @@ function App() {
         />
         <button type="submit">Add</button>
       </form>
-      <div>
+      <div className='toDoList'>
         {todoList.length ? 
         todoList.map((t) => (
-          <div key={t.id}>
+          <div
+            className='toDoContainer' 
+            key={t.id}
+          >
             <p>{t.content}</p>
             <button value={t.id} onClick={() => handleDelete(t.id)}>Delete</button>
           </div>
