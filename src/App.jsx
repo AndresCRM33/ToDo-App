@@ -34,9 +34,9 @@ function App() {
 
   function handleToggleComplete(id){
     dispatch(updateToDo(id))
-    setTodoList(
-      todoList.map(t => t.id === id ? {...t, completed: !t.completed} : t)
-    )
+    // setTodoList(
+    //   todoList.map(t => t.id === id ? {...t, completed: !t.completed} : t)
+    // )
   }
 
   function handleDelete(id){
@@ -48,33 +48,35 @@ function App() {
     <div className='container'>
       <NavBar/>
       {/* <h1>Todo App</h1> */}
-      <form
-        onSubmit={(e) => handleSubmit(e)}
-      >
-        <input 
-          type='text'
-          name='content'
-          value={input.content}
-          onChange={(e) => handleChange(e)}
-        />
-        <button type="submit">Add</button>
-      </form>
-      <div className='toDoList'>
-        {listToDo.length ? 
-        listToDo.map((t) => (
-          <div
-            className={t.completed === false ? 'toDoContainer' : "toDoContainer completed"} 
-            key={t.id}
-          >
-            <p>{t.content}</p>
-            <button value={t.id} onClick={() => handleDelete(t.id)}>Delete</button>
-            <button className='checkButton' onClick={() => handleToggleComplete(t.id)}>
-              {t.completed === true ? "s" : "n"}
-            </button>
-          </div>
-        )):
-        (<div>Sin tareas</div>)
-        }
+      <div className='containerForm'>
+        <form
+          onSubmit={(e) => handleSubmit(e)}
+        >
+          <input 
+            type='text'
+            name='content'
+            value={input.content}
+            onChange={(e) => handleChange(e)}
+          />
+          <button type="submit">Add</button>
+        </form>
+        <div className='toDoList'>
+          {listToDo.length ? 
+          listToDo.map((t) => (
+            <div
+              className={t.completed === false ? 'toDoContainer' : "toDoContainer completed"} 
+              key={t.id}
+            >
+              <p>{t.content}</p>
+              <button value={t.id} onClick={() => handleDelete(t.id)}>Delete</button>
+              <button className='checkButton' onClick={() => handleToggleComplete(t.id)}>
+                {t.completed === true ? "s" : "n"}
+              </button>
+            </div>
+          )):
+          (<div>Sin tareas</div>)
+          }
+        </div>
       </div>
     </div>
   )
