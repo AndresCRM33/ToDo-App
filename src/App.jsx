@@ -7,7 +7,7 @@ function App() {
 
   const dispatch = useDispatch()
   const listToDo = useSelector(state => state.todoList)
-  const [todoList, setTodoList] = useState([])
+  // const [todoList, setTodoList] = useState([])
   const [taskId, setTaskId] = useState(1)
   const [input, setInput] = useState({id: 1, content: "", completed: false})
 
@@ -25,7 +25,7 @@ function App() {
       alert("Por favor, escriba una tarea")
     }else{
       dispatch(addTodo(input))
-      setTodoList([...todoList, input])
+      // setTodoList([...todoList, input])
       setInput({id: taskId + 1, content: "", completed: false})
       setTaskId(taskId + 1)
     }
@@ -58,8 +58,8 @@ function App() {
         <button type="submit">Add</button>
       </form>
       <div className='toDoList'>
-        {todoList.length ? 
-        todoList.map((t) => (
+        {listToDo.length ? 
+        listToDo.map((t) => (
           <div
             className={t.completed === false ? 'toDoContainer' : "toDoContainer completed"} 
             key={t.id}
