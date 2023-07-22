@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTodo, deleteToDo, updateToDo } from './redux/actions'
+import { NavBar } from './components/NavBar/NavBar'
 
 function App() {
 
@@ -45,7 +46,8 @@ function App() {
 
   return (
     <div className='container'>
-      <h1>Todo App</h1>
+      <NavBar/>
+      {/* <h1>Todo App</h1> */}
       <form
         onSubmit={(e) => handleSubmit(e)}
       >
