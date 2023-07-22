@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import './App.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { addTodo, deleteToDo, updateToDo } from './redux/actions'
 
 function App() {
+
+  const dispatch = useDispatch()
+  const listToDo = useSelector(state => state.todoList)
   const [todoList, setTodoList] = useState([])
   const [taskId, setTaskId] = useState(1)
   const [input, setInput] = useState({id: 1, content: "", completed: false})
@@ -19,6 +24,7 @@ function App() {
     if(input.content ===""){
       alert("Por favor, escriba una tarea")
     }else{
+      dispatch(addTodo(input))
       setTodoList([...todoList, input])
       setInput({id: taskId + 1, content: "", completed: false})
       setTaskId(taskId + 1)
@@ -26,12 +32,14 @@ function App() {
   }
 
   function handleToggleComplete(id){
+    dispatch(updateToDo(id))
     setTodoList(
       todoList.map(t => t.id === id ? {...t, completed: !t.completed} : t)
     )
   }
 
   function handleDelete(id){
+    dispatch(deleteToDo(id))
     setTodoList(todoList.filter(t => t.id !== id))
   }
 
