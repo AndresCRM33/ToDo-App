@@ -1,6 +1,7 @@
 import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from "../actions"
 
 const initialState = {
+    todoId: 1,
     todoList : []
 }
 
@@ -8,7 +9,8 @@ const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
             return {...state,
-                todoList : [...state.todoList, action.payload]
+                todoId: state.todoId + 1,
+                todoList : [...state.todoList, action.payload],
             }
         case DELETE_TODO:
             const list = state.todoList.filter(t => t.id !== action.payload)
