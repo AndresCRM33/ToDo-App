@@ -23,12 +23,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.199);
+  border-radius: 5px;
   width: 65%;
+  transition: all 0.3s;
 }
 
 .toDoContainer.completed{
-  background-color: green;
+  background-color: rgb(164, 164, 247);
+  border: 1px solid rgb(164, 164, 247);
+
 }
 
 .checkButton{
