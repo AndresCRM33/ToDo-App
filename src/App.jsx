@@ -3,6 +3,7 @@ import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTodo, deleteToDo, updateToDo } from './redux/actions'
 import { NavBar } from './components/NavBar/NavBar'
+import {AiFillDelete, AiOutlineCheck, AiOutlineClose} from "react-icons/ai"
 
 function App() {
 
@@ -69,9 +70,9 @@ function App() {
               key={t.id}
             >
               <p>{t.content}</p>
-              <button value={t.id} onClick={() => handleDelete(t.id)}>Delete</button>
+              <button value={t.id} className="deleteButton" onClick={() => handleDelete(t.id)}><AiFillDelete size="1.7em" color="rgb(224, 78, 78)"/></button>
               <button className='checkButton' onClick={() => handleToggleComplete(t.id)}>
-                {t.completed === true ? "s" : "n"}
+                {t.completed === true ? <AiOutlineCheck size="2em" color='green'/> : <AiOutlineClose size="2em" color='red'/>}
               </button>
             </div>
           )):
