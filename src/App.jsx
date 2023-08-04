@@ -53,10 +53,10 @@ function App() {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire('No se eliminó la tarea!', '', 'success')
+        Swal.fire('No se eliminó la tarea!', '', 'info')
       } 
       else if (result.isDenied) {
-        Swal.fire('Tarea', '', 'info')
+        Swal.fire('Tarea eliminada!', '', 'success')
         dispatch(deleteToDo(id))
         setTodoList(todoList.filter(t => t.id !== id))
       }
