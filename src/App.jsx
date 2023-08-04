@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addTodo, deleteToDo, updateToDo } from './redux/actions'
 import { NavBar } from './components/NavBar/NavBar'
 import {AiFillDelete, AiOutlineCheck, AiOutlineClose} from "react-icons/ai"
+import Swal from "sweetalert2"
 
 function App() {
 
@@ -42,14 +43,24 @@ function App() {
   }
 
   function handleDelete(id){
-    let confirmar = confirm("Estás seguro de eliminar la tarea?")
-    if (confirmar === true){
-      alert("Tarea eliminada") 
-      dispatch(deleteToDo(id))
-      setTodoList(todoList.filter(t => t.id !== id)) 
-    }else{
-      alert("No se eliminó la tarea")
-    }
+
+    Swal.fire({
+      title: 'Estás seguro de eliminar la tarea?',
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: 'Conservar',
+      denyButtonText: `Eliminar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('No se eliminó la tarea!', '', 'success')
+      } 
+      else if (result.isDenied) {
+        Swal.fire('Tarea', '', 'info')
+        dispatch(deleteToDo(id))
+        setTodoList(todoList.filter(t => t.id !== id))
+      }
+    })
   }
 
   return (
