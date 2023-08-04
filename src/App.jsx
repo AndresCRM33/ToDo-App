@@ -26,7 +26,7 @@ function App() {
   function handleSubmit(e){
     e.preventDefault()
     if(input.content ===""){
-      alert("Por favor, escriba una tarea")
+      Swal.fire('Por favor, escriba una tarea', '', 'info')
     }else{
       dispatch(addTodo(input))
       // setTodoList([...todoList, input])
