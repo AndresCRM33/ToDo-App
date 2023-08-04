@@ -70,14 +70,16 @@ function App() {
       <div className='containerForm'>
         <form
           onSubmit={(e) => handleSubmit(e)}
+          className='formContainer'
         >
           <input 
             type='text'
             name='content'
             value={input.content}
+            className='inputText'
             onChange={(e) => handleChange(e)}
           />
-          <button type="submit">Add</button>
+          <button className='inputSubmit' type="submit">Add</button>
         </form>
         <div className='toDoList'>
           {listToDo.length ? 
@@ -93,7 +95,8 @@ function App() {
               </button>
             </div>
           )):
-          (<div>Sin tareas</div>)
+          (<div>
+            <h3>Sin tareas.</h3></div>)
           }
         </div>
       </div>
