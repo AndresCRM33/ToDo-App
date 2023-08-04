@@ -42,8 +42,14 @@ function App() {
   }
 
   function handleDelete(id){
-    dispatch(deleteToDo(id))
-    setTodoList(todoList.filter(t => t.id !== id))
+    let confirmar = confirm("Estás seguro de eliminar la tarea?")
+    if (confirmar === true){
+      alert("Tarea eliminada") 
+      dispatch(deleteToDo(id))
+      setTodoList(todoList.filter(t => t.id !== id)) 
+    }else{
+      alert("No se eliminó la tarea")
+    }
   }
 
   return (
