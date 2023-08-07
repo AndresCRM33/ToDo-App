@@ -10,6 +10,7 @@ function App() {
 
   const dispatch = useDispatch()
   const listToDo = useSelector(state => state.todoList)
+  const completedTasks = listToDo.filter(t => t.completed !== false)
   const taskId = useSelector(state => state.todoId)
   // const [todoList, setTodoList] = useState([])
   // const [taskId, setTaskId] = useState(1)
@@ -69,6 +70,7 @@ function App() {
       {/* <h1>Todo App</h1> */}
       <div className='containerForm'>
         <span>Tareas totales: {listToDo.length}</span>
+        <span>Tareas completadas: {completedTasks.length}</span>
         <form
           onSubmit={(e) => handleSubmit(e)}
           className='formContainer'
