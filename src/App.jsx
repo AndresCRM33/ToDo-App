@@ -68,14 +68,8 @@ function App() {
   return (
     <div className='containerApp'>
       <NavBar/>
-      <div className='progressBarContainer'>
-        <span className='progressBarText'>Tareas completadas: {completedTasks.length} de {listToDo.length}</span>
-        <ProgressBar listToDo={listToDo.length} completedTasks={completedTasks.length}/>
-      </div>
       {/* <h1>Todo App</h1> */}
       <div className='containerForm'>
-        {/* <span>Tareas totales: {listToDo.length}</span> */}
-        {/* <span>Tareas completadas: {completedTasks.length}</span> */}
         <form
           onSubmit={(e) => handleSubmit(e)}
           className='formContainer'
@@ -89,6 +83,10 @@ function App() {
           />
           <button className='inputSubmit' type="submit">Add</button>
         </form>
+        <div className='progressBarContainer'>
+          <span className='progressBarText'>Tareas completadas:</span>
+          <ProgressBar listToDo={listToDo.length} completedTasks={completedTasks.length}/>
+        </div>
         <div className='toDoList'>
           {listToDo.length ? 
           listToDo.map((t) => (
