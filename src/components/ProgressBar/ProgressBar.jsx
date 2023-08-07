@@ -6,7 +6,7 @@ export function ProgressBar({listToDo, completedTasks}){
     // const porcentaje = 50
     const progressPercentage = (completedTasks / listToDo) * 100;
 
-    return(<div>
+    return(<div className="container">
         <div 
             className="progress" 
             role="progressbar" 
@@ -16,9 +16,10 @@ export function ProgressBar({listToDo, completedTasks}){
             aria-valuemax={listToDo}
         >
             <div 
-                className="progress-bar" 
+                className="progress-bar bg-danger" 
                 style={{width: `${progressPercentage}%`}}
             >
+            {completedTasks}/{listToDo}
             </div>
         </div>
     </div>)

@@ -60,7 +60,7 @@ function App() {
       else if (result.isDenied) {
         Swal.fire('Tarea eliminada!', '', 'success')
         dispatch(deleteToDo(id))
-        setTodoList(todoList.filter(t => t.id !== id))
+        // setTodoList(todoList.filter(t => t.id !== id))
       }
     })
   }
@@ -68,8 +68,8 @@ function App() {
   return (
     <div className='containerApp'>
       <NavBar/>
-      <div className='progressBar'>
-        <span>Tareas completadas: {completedTasks.length} de {listToDo.length}</span>
+      <div className='progressBarContainer'>
+        <span className='progressBarText'>Tareas completadas: {completedTasks.length} de {listToDo.length}</span>
         <ProgressBar listToDo={listToDo.length} completedTasks={completedTasks.length}/>
       </div>
       {/* <h1>Todo App</h1> */}
