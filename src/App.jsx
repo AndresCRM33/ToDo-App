@@ -68,6 +68,7 @@ function App() {
       <NavBar/>
       {/* <h1>Todo App</h1> */}
       <div className='containerForm'>
+        <span>Tareas totales: {listToDo.length}</span>
         <form
           onSubmit={(e) => handleSubmit(e)}
           className='formContainer'
