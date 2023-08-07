@@ -5,6 +5,7 @@ import { addTodo, deleteToDo, updateToDo } from './redux/actions'
 import { NavBar } from './components/NavBar/NavBar'
 import {AiFillDelete, AiOutlineCheck, AiOutlineClose} from "react-icons/ai"
 import Swal from "sweetalert2"
+import { ProgressBar } from './components/ProgressBar/ProgressBar'
 
 function App() {
 
@@ -65,12 +66,16 @@ function App() {
   }
 
   return (
-    <div className='container'>
+    <div className='containerApp'>
       <NavBar/>
+      <div className='progressBar'>
+        <span>Tareas completadas: {completedTasks.length} de {listToDo.length}</span>
+        <ProgressBar listToDo={listToDo.length} completedTasks={completedTasks.length}/>
+      </div>
       {/* <h1>Todo App</h1> */}
       <div className='containerForm'>
-        <span>Tareas totales: {listToDo.length}</span>
-        <span>Tareas completadas: {completedTasks.length}</span>
+        {/* <span>Tareas totales: {listToDo.length}</span> */}
+        {/* <span>Tareas completadas: {completedTasks.length}</span> */}
         <form
           onSubmit={(e) => handleSubmit(e)}
           className='formContainer'
